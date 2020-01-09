@@ -1,20 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan  3 12:11:32 2020
-
-@author: Windows10
-"""
-
 """
 Name: 
     Adult Body Mass Index Calculator         
-Filename:
-    bmi_cal.py
 Problem Statement:
-    Assuming your weight in kilogram and height in meters  
-    Calculate your BMI value and print it ?
-Data:
-    Not required
+    Assuming your weight in kilogram and height in meters, Calculate your BMI value and print it?
 Extension:
     Take the height and weight of the user from input 
 Hint: 
@@ -23,7 +11,12 @@ Hint:
     """
 # weight =50 kg, height= 1.5 m, bmi= 22.2kg/m2
     
-weight= float(input('enter weight in kg: '))
-height= float(input('enter height in m: '))
+weight= float(input('Enter weight in kg: '))
+height= float(input('Enter height in m: '))
 bmi= (weight/height)/height
 print("Body Mass Index: {:.4f}".format(bmi),'kg/m\u00b2')
+
+'''Output:
+enter weight in kg: 50
+enter height in m: 1.5
+Body Mass Index: 22.2222 kg/m²'''
