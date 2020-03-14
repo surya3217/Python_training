@@ -27,7 +27,7 @@ it would have to be written as ".*.txt"
 
 '''Normal Searching for a substring in a string'''
 s = "Regular expressions easily explained!"
-"easily" in s
+x = "easily" in s
 
 
 '''Introduce the concept of raw string using an example'''
@@ -36,16 +36,15 @@ print ('\tTab')
 print (r'\tTab')
 
 
-
 '''First substring matching in a string using Regular Expression'''
 
 import re
 x = re.search(r"cat","A cat and a rat can't be friends. but cat and dog can")
 
-print(type(x))
+print(type(x))   ## object of re.Match
 
 if x is not None:
-    print(x.span())
+    print(x.span())   # span give the start, end index of matched string
 else:
     print(x)
 
@@ -66,7 +65,6 @@ x = re.finditer(r"cat","A cat and a rat can't be friends. but cat and dog can")
 print(type(x))
 
 next(x).span()
-
 
 
 
@@ -162,18 +160,17 @@ TRY THIS ON SUBLIME TEXT
 """
 
 
-
-
-# quantifier
+ 
 """
+quantifier
 
 A quantifier after a token, which can be a single character or group in brackets, 
 specifies how often that preceding element is allowed to occur. 
 The most common quantifiers are
 
-?           zero or exactly one
 *           zero or more
 +           one or more 
+?           zero or exactly one
 
 """
 
@@ -209,15 +206,12 @@ abc... will not be selected
 ...def will not be selected 
 
 
-
 [a-c]*\.{4}[d-f]*
 [a-c]* means zero or more 
 
 
 [a-c]?\.{4}[d-f]?
 [a-c]? means zero or exactly one 
-
-
 
 
 ?           zero or exactly one
@@ -265,21 +259,16 @@ print(result.end())
 dir(result)
 
 
-
 result = re.match(r'forsk','Forsk forsk Summer Bootcamp')
-
 print(result.start())
 print(result.end())
-
 
 
 result = re.match(r'Forsk','Forsk forsk Summer Bootcamp')
-
 print(result.start())
 print(result.end())
 
-
-
+############################################################
 
 
 import re
@@ -299,7 +288,6 @@ pattern.findall(sentence)
  
 
 """
-
 Code Challenge
   Name: 
     Simpsons Phone Book
@@ -408,7 +396,6 @@ pattern = re.compile (r'end$')
 
 
 
-
 # Matching Phone Numbers 
 # 321-555-4321
 # 123.555.1234
@@ -448,29 +435,26 @@ pattern = re.compile (r'[^b]at')
 
 
 
-
 """
 # using quantifier to match multiple characters at a time 
 ?   -   0 or exactly one 
-* -   0 or more
-+ -   1 or more
-{3} - Exact Number
+*   -   0 or more
++   -   1 or more
+{3} -   Exact Number
 {3,4} - Range of Number (min, max)
 """
 
 # This will match any seperator between the numbers  
 pattern = re.compile (r"\d{3}.\d{3}.\d{4}")
- 
 
 
 # Reading only phone numbers from a text file
-
 pattern = re.compile (r"\d\d\d.\d\d\d.\d\d\d\d")
 
-with open ("data.txt","r", encoding='utf-8') as f:
+with open ("temp","r", encoding='utf-8') as f:
     contents = f.read()
 
-matches = pattern.finditer(text_to_search)
+matches = pattern.finditer(contents)
 
 for match in matches :
     print ( match )
@@ -499,13 +483,10 @@ pattern = re.compile (r"Mr\.?\s[A-Z]\w*")
 ( ) Group
 """
 
-
 # using group ( )  to match a multiple 
 pattern = re.compile (r"M(r|s|rs)\.?\s[A-Z]\w*")
 
 pattern = re.compile (r"(Mr|Ms|Mrs)\.?\s[A-Z]\w*")
-
-
 
 
 
@@ -516,18 +497,13 @@ sylvester.fernandes@university.edu
 sylvester-321-fernandes@my-work.net
 """
 
-
-
 # Match all of the emails 
 # + will match one or more 
 pattern = re.compile (r"[a-zA-Z]+@[a-zA-Z]+\.com")
 
 pattern = re.compile (r"[a-zA-Z.]+@[a-zA-Z]+\.(com|edu)")
 
-
 pattern = re.compile (r"[a-zA-Z0-9.-]+@[a-zA-Z-]+\.(com|edu|net)")
-
-
 
 
 
@@ -577,6 +553,7 @@ String that doesn't match: john@doe.something (TLD is too long)
 
 
 # Sample regex 4
+
 mobile="""
 +9999999999
 999999-999
@@ -832,132 +809,6 @@ Code Challenge
 # post_codes_germany.txt
 
 
-
-# Sublime Text Story Telling
-"""
-CMD + F     Normal Search  ( easily )
-
-# Change the searching from Normal to Regular Expression based 
-========================================================
-\d          One Digit
-
-\d\d        Two Digits
-
-\d\d\d      Three Digits
-
-\d{3}       Minimum Three Digits
-
-\d{3,6}     Minimum Three, Maximum Six Digits
-
-\d{3, }     Minimum Three, Maximum not set
-
-\d{, 6}     Not Possible
-
-\D          Any non Digit
-
-\.          Only dot
-
-\.{3}       Three dots
-
-========================================================
-.	        Any Single Character
-
-[abc]       Any character a or b or c, not combination
-
-[abc]{3}    Combination of any a or b or c in three
-
-[a-z]       Any Character a to z
-
-[a-z0-9]    Any Character a to z, Numbers 0 to 9
-
-[a-z0-9_]   Any Character a to z, Numbers 0 to 9 and _
-
-[^abc]      Any Character except a or b or c
-            ^ is the negation
-
-========================================================
-
-\w          Any alphanumeric character
-
-\W          Any non alphanumeric character
-========================================================
-
-\s          Any whitespace
-
-\S          Anything other than whitespace
-
-========================================================
-
-abc
-
-^abc        Starts with abc
-
-
-def 
-
-def$        Ends with DEF
-
-
-
-^ and $ are meta chracters
-
- 
-ABC 
-
-^ABC
-
-ABC$        Searches ABC in the last 
-
-ABC\$       Searches ABC$  
- 
-ABC\$$      Searches ABC$ in the last 
-
-
-(abc|def)   Searchs abc or def
-
-
-
-========================================================
-
-[a-c]+\.{4}[d-f]+
-
-
-[a-c]+   means one or more
-abc... will not be selected
-...def will not be selected 
-
-
-
-[a-c]*\.{4}[d-f]*
-[a-c]* means zero or more 
-
-
-[a-c]?\.{4}[d-f]?
-[a-c]? means zero or exactly one 
-
-
-
-
-?           zero or exactly one
-*           zero or more
-+           one or more 
-========================================================
-^[a-z0-9_-]{3,16}$
-
-Start with and end with, so in between 
-Password validation
-========================================================
-  
-match       gives index if its in the beginining 
-
-search      gives index if for first and every occurence
-
-findall     does not return index but a list
-========================================================
-
-"""
-
-
 """
 
 https://lerner.co.il/courses/regular-expressions/
@@ -1061,5 +912,5 @@ Course syllabus
     When are regexps not useful?
     Useful resources
 
-
 """
+
