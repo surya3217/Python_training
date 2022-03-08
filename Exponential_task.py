@@ -4,29 +4,32 @@ www.linkedin.com/in/suraj-saini-8a1027143/
 https://github.com/surya3217
 '''
 
-
 # my generic solution to update dictionary
 def recurse_dict(dd, d2):
 
-    key= list(d2.keys())[0]   # finding the key from d2 dict to update
-    print(key)
-    if type(d2[key])==dict:   # checking the data type of dict val
-        dd[key]= recurse_dict(dd[key], d2[key])    # moving to next inside key of dict using recursion
-    else:
-        dd[key]= d2[key]         # if dict val is normal than just updating the val
+    for key in d2.keys():  # finding the key from d2 dict to update
+        print(key)
+        if type(d2[key])==dict:   # checking the data type of dict val
+            dd[key]= recurse_dict(dd[key], d2[key])    # moving to next inside key of dict using recursion
+        else:
+            dd[key]= d2[key]         # if dict val is normal than just updating the val
     return dd
 
 
 ###### input 1
-d1= {'address': {"city": "Delhi", "pincode": "11111", "country": "India"},
-    'personal_info': {'first_name': "Suraj", 'last_name': "Saini"}
+# d1= {'address': {"city": "Delhi", "pincode": "11111", "country": "India"},
+#     'personal_info': {'first_name': "Suraj", 'last_name': "Saini"}
+#     }
+# d2= {'address': {"pincode": "10001"}}
+
+d1= {
+    'personal_info': {'first_name': "Suraj", 'last_name': "Saini"},'address': {"city": "Delhi", "pincode": "11111", "country": "India"}
     }
-d2= {'address': {"pincode": "10001"}}
+d2= {'address': {"pincode": "10001"},'personal_info':{'first_name': "Sai"}}
 
 ###### input 2
 d3= {'patient_info': {'contact': {'email': "abc@gmail.com", 'phone': 9824627820},
                       'name': "Jonny", "DOB": "19-09-1999"}}
-
 d4= {'patient_info': {'contact': {'email': "xyz@yahoo.com"},
                       }}
 
